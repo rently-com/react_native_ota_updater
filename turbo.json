@@ -1,0 +1,117 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalDependencies": [
+    "**/.env.*local"
+  ],
+  "globalEnv": [
+    "PORT",
+    "LOG_LEVEL",
+    "NEXT_PUBLIC_API_URL",
+    "AUTH_URL",
+    "DATABASE_URL",
+    "REDIS_URL",
+    "AWS_REGION",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_ACCESS_KEY_SECRET",
+    "AWS_S3_BUCKET",
+    "AWS_CLOUDFRONT_URL",
+    "CLOUDFLARE_ACCOUNT_ID",
+    "CLOUDFLARE_R2_ACCESS_KEY_ID",
+    "CLOUDFLARE_R2_ACCESS_KEY_SECRET",
+    "CLOUDFLARE_R2_BUCKET",
+    "CLOUDFLARE_URL",
+    "AUTH_ALLOWED_DOMAIN",
+    "AUTH_SECRET",
+    "AUTH_GITHUB_ID",
+    "AUTH_GITHUB_SECRET"
+  ],
+  "globalPassThroughEnv": [
+    "NODE_ENV",
+    "CI"
+  ],
+  "tasks": {
+    "topo": {
+      "dependsOn": [
+        "^topo"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        ".vercel/output/**",
+        "next-env.d.ts",
+        ".output/**",
+        "dist/**"
+      ]
+    },
+    "start": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "^dev:next"
+      ],
+      "cache": false,
+      "persistent": true
+    },
+    "dev:next": {
+      "dependsOn": [
+        "^dev:next"
+      ]
+    },
+    "dev:api": {
+      "dependsOn": [
+        "^dev"
+      ],
+      "cache": false,
+      "persistent": true
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^topo",
+        "^build"
+      ],
+      "outputs": [
+        "node_modules/.cache/tsbuildinfo.json"
+      ]
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    },
+    "clean-build": {
+      "cache": false
+    },
+    "//#clean-build": {
+      "cache": false
+    },
+    "db-generate": {
+      "cache": false,
+      "persistent": true
+    },
+    "migrate": {
+      "cache": false,
+      "persistent": true
+    },
+    "migrate:script": {
+      "cache": false
+    },
+    "push": {
+      "cache": false,
+      "interactive": true
+    },
+    "studio": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

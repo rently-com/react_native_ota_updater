@@ -1,0 +1,8 @@
+{
+  "name": "@rentlydev/rnota-tsconfig",
+  "private": true,
+  "version": "2.0.0",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
+  }
+}

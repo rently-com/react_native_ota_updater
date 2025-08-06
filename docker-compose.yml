@@ -1,0 +1,67 @@
+services:
+  # React Native OTA Updater
+  ota-updater:
+    container_name: react-native-ota-updater
+    platform: linux/amd64
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - app_network
+    environment:
+      NODE_ENV: production
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: ${DATABASE_URL}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+      AUTH_URL: ${AUTH_URL}
+      AWS_REGION: ${AWS_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_ACCESS_KEY_SECRET: ${AWS_ACCESS_KEY_SECRET}
+      AWS_S3_BUCKET: ${AWS_S3_BUCKET}
+      AWS_CLOUDFRONT_URL: ${AWS_CLOUDFRONT_URL}
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${CLOUDFLARE_R2_ACCESS_KEY_ID}
+      CLOUDFLARE_R2_ACCESS_KEY_SECRET: ${CLOUDFLARE_R2_ACCESS_KEY_SECRET}
+      CLOUDFLARE_R2_BUCKET: ${CLOUDFLARE_R2_BUCKET}
+      CLOUDFLARE_URL: ${CLOUDFLARE_URL}
+      AUTH_ALLOWED_DOMAIN: ${AUTH_ALLOWED_DOMAIN}
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_GITHUB_ID: ${AUTH_GITHUB_ID}
+      AUTH_GITHUB_SECRET: ${AUTH_GITHUB_SECRET}
+
+  # Lighter Redis Image
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379" # Expose Redis on port 6379
+    networks:
+      - app_network
+
+  # PostgreSQL (Commented Out)
+  # postgres:
+  #   image: postgres:16.2-alpine
+  #   container_name: postgres
+  #   restart: unless-stopped
+  #   ports:
+  #     - "5432:5432" # Expose PostgreSQL on port 5432
+  #   networks:
+  #     - app_network
+  #   environment:
+  #     POSTGRES_DB: postgres_db
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres_password
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+# Shared network for inter-container communication
+networks:
+  app_network:
+    driver: bridge
+# Persistent volumes (Commented Out)
+# volumes:
+#   postgres_data:

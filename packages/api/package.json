@@ -1,0 +1,60 @@
+{
+  "name": "@rentlydev/rnota-api",
+  "version": "2.0.0",
+  "type": "module",
+  "exports": {
+    "./routes": {
+      "types": "./dist/routes/index.d.ts",
+      "default": "./src/routes/index.ts"
+    },
+    "./app": {
+      "types": "./dist/app.d.ts",
+      "default": "./src/app.ts"
+    },
+    "./env": {
+      "types": "./dist/env.d.ts",
+      "default": "./src/env.ts"
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "start": "pnpm with-env node ./dist/index.js",
+    "dev:next": "tsc && tsc-alias",
+    "dev:api": "pnpm with-env tsx watch src/index.ts",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean-build": "rm -rf .cache .turbo .next dist",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "@hono/zod-openapi": "^0.18.4",
+    "@rentlydev/rnota-auth": "workspace:*",
+    "@rentlydev/rnota-aws": "workspace:*",
+    "@rentlydev/rnota-db": "workspace:*",
+    "@rentlydev/rnota-redis": "workspace:*",
+    "@scalar/hono-api-reference": "^0.5.173",
+    "@t3-oss/env-nextjs": "catalog:",
+    "date-fns": "^4.1.0",
+    "form-data": "^4.0.1",
+    "hono": "catalog:",
+    "hono-pino": "^0.7.2",
+    "mime": "^4.0.6",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "semver": "catalog:",
+    "stoker": "^1.4.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@rentlydev/rnota-tsconfig": "workspace:*",
+    "@types/node": "catalog:node20",
+    "@types/semver": "^7.5.8",
+    "dotenv-cli": "catalog:",
+    "tsc-alias": "catalog:",
+    "tsx": "catalog:"
+  }
+}

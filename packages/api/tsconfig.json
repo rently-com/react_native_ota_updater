@@ -1,0 +1,13 @@
+{
+  "extends": "@rentlydev/rnota-tsconfig/internal-package.json",
+  "include": ["src"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@/api/*": ["./src/*"]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+packages:
+- apps/*
+- internal/*
+- packages/*
+- shared/*
+- tooling/*
+
+catalog:
+  "@t3-oss/env-nextjs": "^0.12.0"
+  tsc-alias: ^1.8.10
+  hono: ^4.6.14
+  typescript: ^5.7.3
+  tsx: ^4.19.2
+  zod: ^3.24.1
+  dotenv-cli: ^7.4.4
+  semver: ^7.7.1
+
+catalogs:
+  node20:
+    '@types/node': ^20.17.12
+  node18:
+    '@types/node': ^18.19.70

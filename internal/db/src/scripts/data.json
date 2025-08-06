@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "name": "Alex Johnson",
+      "email": "alex.johnson@example.com",
+      "image": "https://avatars.githubusercontent.com/u/12345678?v=4"
+    },
+    {
+      "name": "Maria Garcia",
+      "email": "maria.garcia@example.com",
+      "image": "https://avatars.githubusercontent.com/u/87654321?v=4"
+    }
+  ],
+  "apps": [
+    {
+      "name": "Urban Explorer",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1a/2b/3c/1a2b3c4d-5e6f-7890-abcd-ef1234567890/AppIcon-0-0-1x_U007epad-0-1-85-220.png/460x0w.webp"
+    },
+    {
+      "name": "Forward Motion",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/6f/78/90/6f789012-3456-7890-1234-678901234567/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/460x0w.webp"
+    }
+  ],
+  "deployments": {
+    "Urban Explorer": {
+      "ios": {
+        "Production": {
+          "name": "Production",
+          "key": "urban_explorer_ios_production_AbCdEfGhIjKl"
+        },
+        "Staging": {
+          "name": "Staging",
+          "key": "urban_explorer_ios_staging_MnOpQrStUvWx"
+        }
+      },
+      "android": {
+        "Production": {
+          "name": "Production",
+          "key": "urban_explorer_android_production_YzAbCdEfGhIj"
+        },
+        "Staging": {
+          "name": "Staging",
+          "key": "urban_explorer_android_staging_KlMnOpQrStUv"
+        }
+      }
+    }
+  }
+}

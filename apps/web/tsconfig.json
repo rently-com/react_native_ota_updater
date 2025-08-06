@@ -1,0 +1,17 @@
+{
+  "extends": "@rentlydev/rnota-tsconfig/base.json",
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@/web/*": ["./src/*"],
+      "@/api/*": ["../../packages/api/src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "src", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "@rentlydev/rnota-db",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./env": {
+      "types": "./dist/env.d.ts",
+      "default": "./src/env.ts"
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "dev:next": "tsc && tsc-alias",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean-build": "rm -rf .cache .turbo .next dist",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "push": "pnpm drizzle-kit push",
+    "studio": "pnpm drizzle-kit studio",
+    "db-generate": "pnpm drizzle-kit generate",
+    "migrate": "pnpm drizzle-kit migrate",
+    "db-reset": "pnpm with-env tsx src/scripts/reset.ts",
+    "migrate:script": "pnpm with-env tsx src/scripts/migrate.ts",
+    "seed:faker": "pnpm with-env tsx src/scripts/seed.ts",
+    "seed:admin": "pnpm with-env tsx src/scripts/admin.ts",
+    "drizzle-kit": "pnpm with-env drizzle-kit",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@rentlydev/rnota-aws": "workspace:*",
+    "@t3-oss/env-nextjs": "catalog:",
+    "dotenv-cli": "catalog:",
+    "drizzle-orm": "^0.39.3",
+    "drizzle-zod": "^0.7.0",
+    "nanoid": "^5.0.9",
+    "pg": "^8.13.3",
+    "postgres": "^3.4.5",
+    "slugify": "^1.6.6",
+    "zod": "catalog:"
+  },
+  "peerDependencies": {
+    "stoker": "^1.4.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.5.0",
+    "@rentlydev/rnota-tsconfig": "workspace:*",
+    "@types/node": "catalog:node20",
+    "@types/pg": "^8.11.11",
+    "drizzle-kit": "^0.30.4",
+    "tsc-alias": "catalog:",
+    "tsx": "catalog:"
+  }
+}

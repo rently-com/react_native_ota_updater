@@ -1,0 +1,46 @@
+{
+  "name": "@rentlydev/rnota-auth",
+  "version": "2.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/auth.d.ts",
+      "default": "./src/auth.ts"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "default": "./src/react.ts"
+    },
+    "./jwt": {
+      "types": "./dist/jwt.d.ts",
+      "default": "./src/jwt.ts"
+    },
+    "./env": {
+      "types": "./dist/env.d.ts",
+      "default": "./src/env.ts"
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "dev:next": "tsc && tsc-alias",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean-build": "rm -rf .cache .turbo .next dist",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@auth/core": "^0.37.4",
+    "@auth/drizzle-adapter": "^1.7.4",
+    "@rentlydev/rnota-db": "workspace:*",
+    "@t3-oss/env-nextjs": "catalog:",
+    "next-auth": "5.0.0-beta.25",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@rentlydev/rnota-tsconfig": "workspace:*",
+    "@types/node": "catalog:node20",
+    "tsc-alias": "catalog:"
+  }
+}

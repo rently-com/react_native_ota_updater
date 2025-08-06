@@ -1,0 +1,15 @@
+{
+  "name": "@rentlydev/rnota-scripts",
+  "type": "module",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Database migration scripts",
+  "scripts": {
+    "db:migrate:prod": "tsx migrate.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.3",
+    "postgres": "^3.4.5",
+    "tsx": "^4.19.2"
+  }
+}

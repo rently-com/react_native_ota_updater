@@ -1,0 +1,35 @@
+{
+  "name": "@rentlydev/rnota-aws",
+  "version": "2.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./env": {
+      "types": "./dist/env.d.ts",
+      "default": "./src/env.ts"
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist .cache .turbo && tsc && tsc-alias",
+    "dev:next": "tsc && tsc-alias",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.744.0",
+    "@aws-sdk/s3-request-presigner": "^3.744.0",
+    "@t3-oss/env-nextjs": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@rentlydev/rnota-tsconfig": "workspace:*",
+    "@types/node": "catalog:node20",
+    "tsc-alias": "catalog:"
+  }
+}

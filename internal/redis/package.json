@@ -1,0 +1,40 @@
+{
+  "name": "@rentlydev/rnota-redis",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./src/types.ts"
+    },
+    "./env": {
+      "types": "./dist/env.d.ts",
+      "default": "./src/env.ts"
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist .cache .turbo && tsc && tsc-alias",
+    "dev:next": "tsc && tsc-alias",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "catalog:",
+    "ioredis": "^5.5.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@rentlydev/rnota-tsconfig": "workspace:*",
+    "@types/node": "catalog:node20",
+    "tsc-alias": "catalog:"
+  }
+}

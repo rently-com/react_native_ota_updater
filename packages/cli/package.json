@@ -1,0 +1,94 @@
+{
+  "name": "@rentlydev/rnota-cli",
+  "description": "CLI tool for managing over-the-air updates for React Native apps",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "/bin",
+    "/dist",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "oclif"
+  ],
+  "bin": {
+    "rnota": "./bin/run.js"
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "dev": "pnpm postpack && node ./bin/dev.js",
+    "clean": "git clean -xdf .cache .turbo tmp dist tsconfig.tsbuildinfo node_modules oclif.manifest.json",
+    "clean-build": "rm -rf .cache .turbo .next dist tsconfig.tsbuildinfo",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "pnpm run lint",
+    "prepack": "oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version:cli": "oclif readme && git add README.md"
+  },
+  "dependencies": {
+    "@alwatr/parse-duration": "^5.3.0",
+    "@inquirer/prompts": "^7.3.1",
+    "@listr2/prompt-adapter-enquirer": "^2.0.12",
+    "@oclif/core": "^4.2.6",
+    "@oclif/plugin-help": "^6.2.25",
+    "@rentlydev/rnota-api-client": "workspace:*",
+    "axios": "^1.7.9",
+    "backslash": "^0.2.0",
+    "chalk": "^5.4.1",
+    "cli-table3": "^0.6.5",
+    "conf": "^13.1.0",
+    "date-fns": "^4.1.0",
+    "gradle-to-js": "^2.0.1",
+    "http-status-codes": "^2.3.0",
+    "listr2": "^8.2.5",
+    "opener": "^1.5.2",
+    "plist": "^3.1.0",
+    "properties": "^1.2.1",
+    "rimraf": "^6.0.1",
+    "semver": "catalog:",
+    "slash": "5.1.0",
+    "temp": "^0.9.4",
+    "tsup": "^8.3.6",
+    "which": "^5.0.0",
+    "yauzl": "^3.2.0",
+    "yazl": "^3.3.1"
+  },
+  "devDependencies": {
+    "@oclif/test": "^4.1.9",
+    "@rentlydev/rnota-tsconfig": "workspace:*",
+    "@types/chai": "^4.3.20",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "catalog:node18",
+    "@types/opener": "^1.4.3",
+    "@types/plist": "^3.0.5",
+    "@types/semver": "^7.5.8",
+    "@types/temp": "^0.9.4",
+    "@types/which": "^3.0.4",
+    "@types/yauzl": "^2.10.3",
+    "@types/yazl": "^2.4.6",
+    "chai": "^4.5.0",
+    "mocha": "^10.8.2",
+    "oclif": "^4.17.27",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "catalog:"
+  },
+  "oclif": {
+    "bin": "rnota",
+    "dirname": "rnota",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topicSeparator": " ",
+    "macos": {
+      "identifier": "com.rnota.cli"
+    }
+  }
+}
